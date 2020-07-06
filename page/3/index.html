@@ -235,6 +235,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2018/11/23/2018-11-23-mysql%E6%97%B6%E9%97%B4%E7%9B%B8%E5%87%8F%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yiruka114514">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rumah Sakit Chisho Negara">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/23/2018-11-23-mysql%E6%97%B6%E9%97%B4%E7%9B%B8%E5%87%8F%E7%9A%84%E9%97%AE%E9%A2%98/" itemprop="url">2018-11-23-mysql时间相减的问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Diposting di</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-23T21:37:54+09:00">
+                2018-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天弄mySQL的时候需要计算两个时间点的间隔，于是就上网搜了一下计算方法，没想到里面藏着个小坑……<br>原文：<a href="https://blog.csdn.net/yzsind/article/details/8831429" target="_blank" rel="noopener">mysql时间相减的问题(bug)</a><br>先看一下错误的现象如下，第1条正确，第2，3条的t2-t1不正确：  </p>
+<pre><code>mysql&gt; select t1,t2,t2-t1 from mytest;
++---------------------+---------------------+-------+
+| t1                  | t2                  | t2-t1 |
++---------------------+---------------------+-------+
+| 2013-04-21 16:59:33 | 2013-04-21 16:59:43 |    10 |
+| 2013-04-21 16:59:33 | 2013-04-21 17:00:33 |  4100 |
+| 2013-04-21 16:59:33 | 2013-04-21 17:59:35 | 10002 |
++---------------------+---------------------+-------+
+3 rows in set</code></pre><blockquote>
+<p>实际是mysql的时间相减是做了一个隐式转换操作，将时间转换为整数，但并不是用unix_timestamp转换，而是直接把年月日时分秒拼起来，如2013-04-21 16:59:33 直接转换为20130421165933，由于时间不是十进制，所以最后得到的结果没有意义，这也是导致上面出现坑爹的结果。  </p>
+</blockquote>
+<p>要得到正确的时间相减秒值，有以下3种方法：</p>
+<ul>
+<li><p>1、time_to_sec(timediff(t2, t1)),</p>
+</li>
+<li><p>2、timestampdiff(second, t1, t2),</p>
+</li>
+<li><p>3、unix_timestamp(t2) -unix_timestamp(t1)</p>
+<pre><code>--测试脚本
+mysql&gt; select t1, t2,t2-t1,time_to_sec(timediff(t2, t1)) diff1,timestampdiff(second, t1, t2) diff2,unix_timestamp(t2) -unix_timestamp(t1) diff3 from mytest;
++---------------------+---------------------+-------+-------+-------+-------+
+| t1                  | t2                  | t2-t1 | diff1 | diff2 | diff3 |
++---------------------+---------------------+-------+-------+-------+-------+
+| 2013-04-21 16:59:33 | 2013-04-21 16:59:43 |    10 |    10 |    10 |    10 |
+| 2013-04-21 16:59:33 | 2013-04-21 17:00:33 |  4100 |    60 |    60 |    60 |
+| 2013-04-21 16:59:33 | 2013-04-21 17:59:35 | 10002 |  3602 |  3602 |  3602 |
++---------------------+---------------------+-------+-------+-------+-------+
+3 rows in set</code></pre></li>
+</ul>
+<blockquote>
+<p>这个问题2003年就有人在mysql4.0的版本时反馈，但mysql官方并不认为是bug，因为他们认为mysql并不支持时间直接相减操作，应该用专用函数处理，所以一直没有修正。但我认为这个很容易导致使用错误，要么就直接报错，要么显示正确的结果。</p>
+</blockquote>
+<p>这个世界上并没有BUG，只有不能输出预期结果的代码。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2018/11/05/2018-11-04-%E5%8D%81%E4%B8%80%E6%9C%88%E5%9B%9B%E6%97%A5%E5%A4%9C%E6%9D%82%E8%B0%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1418,7 +1571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posting</span>
                 </a>
               </div>
@@ -1441,16 +1594,6 @@
 
           
 
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/yiruka114514" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-            </div>
           
 
           
