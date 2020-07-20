@@ -235,6 +235,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2019/12/27/2019-12-27-prisma%E9%83%A8%E7%BD%B2%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9Acould%20not%20connect%20to%20server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yiruka114514">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rumah Sakit Chisho Negara">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/27/2019-12-27-prisma%E9%83%A8%E7%BD%B2%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9Acould%20not%20connect%20to%20server/" itemprop="url">2019-12-27-prisma部署时报错：could not connect to server</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Diposting di</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-27T14:49:27+09:00">
+                2019-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>想用Prisma从本地MySQL数据库生成RESTful的API。<br>按照官方教程，先是<code>prisma init</code>，按提示操作完之后输入<code>docker-compose up -d</code>创建并启动容器，成功。<br>接下来输入<code>prisma deploy</code>，结果显示<code>Could not connect to server at http://localhost:4466.Please check if your server is running</code>。但是<code>docker ps</code>一下，可以看到容器成功在<code>4406</code>端口运行……<br>翻了一下 Github 的 issue，发现是<code>docker-compose.yml</code>文件配置的锅。  </p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span>  </span><br><span class="line"><span class="attr">services:</span>  </span><br><span class="line">  <span class="attr">prisma:</span>  </span><br><span class="line">    <span class="attr">image:</span> <span class="string">prismagraphql/prisma:1.34.6</span>  </span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span>  </span><br><span class="line">    <span class="attr">ports:</span>  </span><br><span class="line">      <span class="bullet">-</span> <span class="string">"4466:4466"</span>  </span><br><span class="line">    <span class="attr">environment:</span>  </span><br><span class="line">      <span class="attr">PRISMA_CONFIG:</span> <span class="string">|</span>  </span><br><span class="line">        <span class="attr">port:</span> <span class="number">4466</span>  </span><br><span class="line">        <span class="attr">databases:</span>  </span><br><span class="line">          <span class="attr">default:</span>  </span><br><span class="line">            <span class="attr">connector:</span> <span class="string">mysql</span>  </span><br><span class="line">            <span class="attr">host:</span> <span class="string">$&#123;host&#125;</span>  </span><br><span class="line">            <span class="attr">schema:</span> <span class="string">transactions</span>  </span><br><span class="line">            <span class="attr">user:</span> <span class="string">$&#123;user&#125;</span>  </span><br><span class="line">            <span class="attr">password:</span> <span class="string">$&#123;password&#125;</span>  </span><br><span class="line">            <span class="attr">rawAccess:</span> <span class="literal">true</span>  </span><br><span class="line">            <span class="attr">port:</span> <span class="string">'3306'</span>  </span><br><span class="line">            <span class="attr">migrations:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>把<code>schema</code>改成<code>database</code>。<code>docker-compose up -d</code>重新启动容器，再<code>prisma deploy</code>，成功。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2019/12/27/2019-12-23-%E6%B3%A2%E5%88%A9%E6%AF%94%E9%98%BF%E5%AF%B9%E7%BD%97%E9%A9%AC%E6%94%BF%E5%88%B6%E7%9A%84%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1493,135 +1616,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2018/11/24/2018-11-24-%E4%B8%AD%E5%8D%8E%E5%B8%9D%E5%9B%BD%E8%83%BD%E6%9C%89%E6%AE%96%E6%B0%91%E5%9C%B0%E5%90%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yiruka114514">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rumah Sakit Chisho Negara">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/24/2018-11-24-%E4%B8%AD%E5%8D%8E%E5%B8%9D%E5%9B%BD%E8%83%BD%E6%9C%89%E6%AE%96%E6%B0%91%E5%9C%B0%E5%90%97/" itemprop="url">2018-11-24-中华帝国能有殖民地吗</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Diposting di</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-24T02:44:54+09:00">
-                2018-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>高二的时候读到刘慈欣写的&lt;西洋&gt;，里面郑和大手一挥，从此大明走向大航海时代的场景真是让人遐想联翩。毕竟那个年代，中国似乎也拥有远洋航行，至少是沿着海岸远洋航行的能力；军事装备上，也胜于非洲土著。如果走向殖民扩张的道路，也许这个今天世界就会有完全不一样的故事。不过遗憾的是，历史大概不会给中华文明这样一个选择肢。</p>
-<p>中国从秦代以来长期实行的帝制决定了中国不可能像西欧一样走向殖民扩张。帝制意味着中华文明必须大一统，必须“普天之下，莫非王土”；或者准确的说，是”中华文明的普天之下，莫非王土“。</p>
-<p>中国皇帝可以容忍非中华文明的统治者独立存在，因为皇帝可以用“蛮夷”来自我安慰，对那些不受王化的土地视若无睹；“蛮夷书有无理者“，犹且可以”勿复以闻”，但“卧榻之侧，岂容他人鼾睡“皇帝永远不会允许中华文明里再出现一个独立的统治者，不仅如此，他必须千方百计把这种现象消灭在萌芽阶段。如果开辟了一块领土，却是不便于管理的地方，那么中华帝国会宁愿不把这片土地纳入版图。汉武帝攻下海南岛，却：弃置珠崖“；台湾岛近在咫尺，有明一代却不曾纳入版图，直到清朝消灭岛上的郑氏政权，仍然有人建议弃置不管。中国皇帝其实不在乎自己国家的疆域有多大，他更在乎自己的领土上有多少人形牲畜可以供他奴役。</p>
-<p>而西欧管理殖民地的大员叫viceroy。中文翻译作总督。的确，viceroy手握政治、经济、军事权力，就像清代总督一样，可谓是封疆大吏。但是这个翻译接了中华文明的地气，却丧失了藏在词源的弦外之音。Vice roy（rax），直接翻译过来就是副王。中国的总督，只是皇帝在地方的肢端，因此总“必得圣明指示”，而西方的总督却是“副王”。若是把总督比作手指，那viceroy也许更像脊椎吧。但中华帝国到最后连宰相的存在都不能容忍，又怎么会允许”副王“存在呢。</p>
-<p>&lt;西洋&gt;里美好的梦，在现实中是内生性无解的</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1671,7 +1670,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posting</span>
                 </a>
               </div>
@@ -1684,7 +1683,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
