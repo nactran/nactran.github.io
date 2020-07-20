@@ -235,6 +235,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2020/03/07/2020-03-07-Vue2.0%E4%B8%AD%E7%9B%91%E5%90%AC%E7%BB%84%E4%BB%B6%E6%BB%9A%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yiruka114514">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rumah Sakit Chisho Negara">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/07/2020-03-07-Vue2.0%E4%B8%AD%E7%9B%91%E5%90%AC%E7%BB%84%E4%BB%B6%E6%BB%9A%E5%8A%A8/" itemprop="url">2020-03-07-Vue2.0中监听组件滚动</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Diposting di</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-07T05:20:02+09:00">
+                2020-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先通过$refs获取dom元素</span></span><br><span class="line"><span class="keyword">this</span>.box = <span class="keyword">this</span>.$refs.viewBox</span><br><span class="line"><span class="comment">// 监听这个dom的scroll事件</span></span><br><span class="line"><span class="keyword">this</span>.box.addEventListener(<span class="string">'scroll'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.$refs.viewBox.scrollTop)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<p>上面这段代码是 Vue1 .0版本的，如果用Vue 2.0，浏览器会报错：<code>this.box.addEventListener is not a function</code>。原因是因为在 Vue 2.0 中，直接用 <code>$refs.viewBox</code> 获取的不是DOM元素，而是一个 VueComponent。要获取 DOM元素必须在<code>[ref]</code>后面加上<code>.$el</code>。     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先通过$refs获取dom元素</span></span><br><span class="line"><span class="keyword">this</span>.box = <span class="keyword">this</span>.$refs.viewBox.$el</span><br><span class="line"><span class="comment">// 监听这个dom的scroll事件</span></span><br><span class="line"><span class="keyword">this</span>.box.addEventListener(<span class="string">'scroll'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.$refs.viewBox.$el.scrollTop)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<p>上面这段代码就可以正确运行了。      </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2019/12/27/2019-12-27-prisma%E9%83%A8%E7%BD%B2%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9Acould%20not%20connect%20to%20server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1491,131 +1614,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2018/12/04/2018-12-04-%E6%9E%84%E5%BB%BAecharts%E6%97%B6%E6%8A%A5%E9%94%99uglifyPlugin%20is%20not%20a%20function/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yiruka114514">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rumah Sakit Chisho Negara">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/04/2018-12-04-%E6%9E%84%E5%BB%BAecharts%E6%97%B6%E6%8A%A5%E9%94%99uglifyPlugin%20is%20not%20a%20function/" itemprop="url">2018-12-04-构建echarts时报错uglifyPlugin is not a function</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Diposting di</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-04T10:16:46+09:00">
-                2018-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p> 最近准备学习数据可视化的前端工具echarts。结果按照官网上的指南: <strong>使用 echarts 提供的构建脚本自定义构建</strong> 的时候踩了个坑。<br> 先是显示各种缺包，按照报错提示好不容易装完所有包，还是遇到了一个小坑。<br> 输入命令<br> <code>node node_modules/echarts/build/build.js --min -i echarts.custom.js -o lib/echarts.custom.min.js</code><br> 结果报错<code>TypeError: uglifyPlugin is not a function</code><br> 上网上搜到一篇教程：<a href="https://blog.csdn.net/tbicf/article/details/81193218" target="_blank" rel="noopener">在使用构建脚本echarts/build/build.js 报TypeError: uglifyPlugin is not a function错误时的解决方法</a>，按着教程操作，把<code>rollup-plugin-uglify</code>里的<code>index.js</code>改为<code>rollup-plugin-uglify.js</code>放到<code>echarts/build</code>目录下，结果还是报错<br> <code>Cannot find module &#39;rollup-plugin-uglify&#39;</code><br> 终于在GitHub找到了一个issue: <a href="https://github.com/apache/incubator-echarts/issues/9203" target="_blank" rel="noopener">使用 echarts 提供的构建脚本自定义构建报错</a>，解决方案：  </p>
-<p>找到<code>/node_modules/echarts/build/config.js</code>文件，将  </p>
-<pre><code class="js"><span class="keyword">const</span> uglifyPlugin = <span class="built_in">require</span>(<span class="string">'rollup-plugin-uglify'</span>) </code></pre>
-<p>修改为  </p>
-<pre><code class="js"><span class="keyword">const</span> uglifyPlugin = <span class="built_in">require</span>(<span class="string">'rollup-plugin-uglify'</span>).uglify</code></pre>
-<p>问题解决。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1670,7 +1668,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">posting</span>
                 </a>
               </div>
