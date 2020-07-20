@@ -235,6 +235,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2020/06/12/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BF%AB%E6%8E%92%E3%80%81%E5%BD%92%E6%8E%92%E3%80%81%E4%BA%8C%E5%88%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yiruka114514">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rumah Sakit Chisho Negara">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/12/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BF%AB%E6%8E%92%E3%80%81%E5%BD%92%E6%8E%92%E3%80%81%E4%BA%8C%E5%88%86/" itemprop="url">学习笔记：快排、归排、二分</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Diposting di</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-12T14:42:32+09:00">
+                2020-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>排序  </p>
+<ul>
+<li>快排  </li>
+<li>归并排序  </li>
+</ul>
+<p>二分  </p>
+<ul>
+<li>整数二分</li>
+<li>浮点数 </li>
+</ul>
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p><i>不稳定的</i> </p>
+<h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><p><code>nlog(n)</code>，最坏<code>n^2</code></p>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>分治<br>（1）确定分界点：<code>q[l]</code> <code>q[(l+r)/2]</code> <code>q[r]</code> <code>随机</code><br>（2）调整区间 使得左边所有数小于等于x，右边所有数大于等于x<br>（3）递归处理左右两段</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> +<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> q[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l ,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r)<span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//x不能取q[r]</span></span><br><span class="line">    <span class="keyword">int</span> x = q[(l+r)/<span class="number">2</span>],i = l - <span class="number">1</span>, j = r + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) swap(q[i],q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    quick_sort(q,l,j);</span><br><span class="line">    quick_sort(q,j+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort_2</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l ,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r)<span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//x不能取q[l]</span></span><br><span class="line">    <span class="keyword">int</span> x = q[(l+r+<span class="number">1</span>)/<span class="number">2</span>],i = l - <span class="number">1</span>, j = r + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//为什么用 do while</span></span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) swap(q[i],q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    quick_sort(q,l,i<span class="number">-1</span>);</span><br><span class="line">    quick_sort(q,i,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//会死循环</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort_wrong</span><span class="params">(<span class="keyword">int</span> q[],<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> x = q[(l+r)/<span class="number">2</span>], i=l, j = r;</span><br><span class="line">    <span class="comment">//here?</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">        <span class="keyword">while</span>(q[i] &lt; x)i++;</span><br><span class="line">        <span class="keyword">while</span>(q[j] &gt; x)j--;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) swap(q[i],q[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    quick_sort(q,l,j);</span><br><span class="line">    quick_sort(q,j+<span class="number">1</span>,r);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q[i]);</span><br><span class="line">    </span><br><span class="line">    quick_sort(q,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++)<span class="built_in">printf</span>(<span class="string">"%d"</span>,q[i])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p><i>稳定的</i></p>
+<h2 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h2><p><code>nlog(n)</code></p>
+<h2 id="思想-1"><a href="#思想-1" class="headerlink" title="思想"></a>思想</h2><p>分治<br>（1）以数组中间节点作为分界点 <code>mid =(l+r)/2</code><br>（2）递归排序 left right<br>（3）归并——合二为一 </p>
+<h2 id="模板-1"><a href="#模板-1" class="headerlink" title="模板"></a>模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> q[N],tmp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> q[],l,r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r)<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = l+r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    merge_sort(q,l,mid);</span><br><span class="line">    merge_sort(q,mid+<span class="number">1</span>,r);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;=q[j])tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k++] = q[j++];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)tmp[k++] = q[j++];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++)q[i] = tmp[j];</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q[i]);</span><br><span class="line">    merge_sort(q,l,r);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="整数二分"><a href="#整数二分" class="headerlink" title="整数二分"></a>整数二分</h1><h2 id="思想-2"><a href="#思想-2" class="headerlink" title="思想"></a>思想</h2><p>如果有单调性，一定可以二分。可以二分的不一定具有单调性  </p>
+<h4 id="二分的本质"><a href="#二分的本质" class="headerlink" title="二分的本质"></a>二分的本质</h4><p>找边界。如果数组中存在一个性质，且一侧满足一侧不满足，二分就能找到这个边界。   </p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>|++++++++++++++(+)(-)———–|</p>
+<h5 id="a-找-边界"><a href="#a-找-边界" class="headerlink" title="a. 找+边界"></a>a. 找+边界</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一定要 + 1，不然死循环</span></span><br><span class="line">mid = (l + r + <span class="number">1</span>) / <span class="number">2</span>  </span><br><span class="line">check = check(mid)</span><br><span class="line"><span class="keyword">if</span>  check == <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 说明边界在当前节点或当前节点右边</span></span><br><span class="line">    find(mid,r)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 说明边界在当前节点左边</span></span><br><span class="line">    find(l,mid<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="b-找-边界"><a href="#b-找-边界" class="headerlink" title="b. 找-边界"></a>b. 找-边界</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mid = (l + r) / <span class="number">2</span>  </span><br><span class="line">check = check(mid)</span><br><span class="line"><span class="keyword">if</span>  check == <span class="literal">True</span>:</span><br><span class="line">    <span class="comment"># 说明边界在当前节点或当前节点左边</span></span><br><span class="line">    find(l,mid)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 说明边界在当前节点右边</span></span><br><span class="line">    find(mid+<span class="number">1</span>,r)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>l+r</code> 是否 <code>+1</code> 看迭代中 <code>l</code> 是否等于 <code>mid + 1</code>  </li>
+<li>每次迭代保证答案在区间内部<h2 id="模板-2"><a href="#模板-2" class="headerlink" title="模板"></a>模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">int</span> l = <span class="number">0</span>, r = n<span class="number">-1</span>;</span><br><span class="line"><span class="comment">//找左边界</span></span><br><span class="line"><span class="keyword">while</span>(l&lt;r)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(q[mid]&lt;x)l = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> r = mid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (q[l] != x) <span class="built_in">cout</span>&lt;&lt;<span class="string">"-1 -1"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; l &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">    <span class="comment">//找右边界</span></span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = n<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(l&lt;r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l+r+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(q[mid]&gt;x)r = mid<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span> l = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; l &lt;&lt;  <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="浮点二分"><a href="#浮点二分" class="headerlink" title="浮点二分"></a>浮点二分</h1></li>
+</ul>
+<p>不需要考虑边界</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2020/03/07/2020-03-07-Vue2.0%E4%B8%AD%E7%9B%91%E5%90%AC%E7%BB%84%E4%BB%B6%E6%BB%9A%E5%8A%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1485,135 +1633,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yiruka114514.github.io/2018/12/06/2018-12-06-%E8%AF%BB%E9%87%8D%E6%96%B0%E5%8F%91%E7%8E%B0%E7%A4%BE%E4%BC%9A%E6%9C%89%E6%84%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yiruka114514">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rumah Sakit Chisho Negara">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/06/2018-12-06-%E8%AF%BB%E9%87%8D%E6%96%B0%E5%8F%91%E7%8E%B0%E7%A4%BE%E4%BC%9A%E6%9C%89%E6%84%9F/" itemprop="url">2018-12-06-读重新发现社会有感</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Diposting di</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-06T00:00:00+09:00">
-                2018-12-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在读熊培云这篇文章的时候，我没有留意出版时间。但是读了几页，从作者对网络社会的情感态度和援引的例子来看，我判断这篇文章一定是写于2010-2012年间，读完一看，果然是写于2011年。</p>
-<p>文中举的例子距今都几乎有10年以上了，真是熟悉而又遥远。周正龙拍老虎的那个时候，大概刚好是我接触互联网的时候——那个时候我读小学三年级。当时上网只是玩游戏，没有接触新闻门户网站，接受新闻渠道也不是互联网。但是从纸媒上我还是了解到了周正龙、周久耕这些人物，觉得网络确实有着神奇的作用。</p>
-<p>熊培云写这篇文章的时候是2011年，那个时候我刚刚接触微博。对于他这种对网络推动社会变革的乐观态度和美好畅想，我从心底里泛起遥远的、已经遗忘的共鸣——这个共鸣来自刚玩微博时的乐观精神。那个时候微博真可谓是“百家争鸣”：名人争相在微博发布自己的观点；社会新闻底下也时常可以看到持不同政见的人在激烈交锋；还有一些名不见经传的博主发博深渊诉苦，大家一呼百应…… </p>
-<p>所以那个时候我也发自内心相信，互联网上舆论的力量——准确的说，是形成共识的舆论的力量——是不可阻挡的，可以摧枯拉朽般地将一切阴暗的、腐朽的事物送进历史的垃圾场，可以让利维坦有所忌惮，可以推动社会往更美好的方向发展。</p>
-<p>但是事实是我盲目乐观了。熊培云写作的这个时代以后，互联网世界悄悄发生了许多我们不易察觉的变化。</p>
-<p>首先，网络上的情绪宣泄愈发不受控制。熊培云写文章的时候，正好是博客时代衰落，向微博时代和微信时代转型的时候。被熊赞誉为“人各有志”的博客时代，那些长篇大论的文章比起微博时代的140字短讯，还是要少几分戾气，多几分理性的。但进入微博时代，网民汹情绪在爆发时经过140字的制限，反而更加猛烈，更加凶狠凌厉。140字的镣铐无意中消磨了我们的思考过程，我们敲下的文字变得更加不受理性控制，只剩下往往是不经雕琢的、丑陋的原始的情绪。（这一点我深有体会，我写博客的时候还会注意措辞和推敲字句，所以情感态度相对温和很多）</p>
-<p>其次，智能推荐算法的发展，偷偷设下了无形的屏障，把我们的网络社交圈子限制在了和自己意识形态相近的人群里。我们每天只和自己意识形态相近的人打交道，互相强化各自的信念，最终营造出一个虚幻的世界。在这样虚幻的世界里生活久了，容易认知失调。我初中时看微博，只觉得社会像是个高压锅，民怨沸腾；但是高中换了一批关注的博主，就觉得好像社会也没有这么糟，国家建设取得了不少进步，老百姓生活安居乐业，好像周围环境还是不错的。都说兼听则明，偏听则暗，但是人性就喜欢偏听，于是人性化的智能推荐算法自然也就使我们堕入永夜而不自知了。之前的美国总统选举，特朗普当了总统，一些“进步人士”如丧考妣，都不知道那些给特朗普投票的人是从哪里来的，其实是在“同温层”待得太久，惯坏了。应该下对流层被不同观点吹一吹，就好了。</p>
-<p>再次，熊赞美的“每个人都能成为媒体”，恰恰正在消解互联网信息的价值。每当一个事件爆出，总有“打脸”、“辟谣”、“反转”纷至沓来。如果不下一番，甚至十番功夫去考证、比对，那么必定是会被各种来源的信息、各人的种观点弄的晕头转向、无所适从。而让大众花费苦工去考证、批判思考本身就是痴人说梦、天方夜谭：上网浏览信息本就是图个轻松，如果浏览信息这么累，还看来做什么呢？于是不少年轻人心灰意冷，为了不被“打脸”，干脆高高挂起、漠不关心。</p>
-<p>而更可怕的是，接下来的五年里，我看到的是越来越多失效的链接、转瞬即逝的帖子和博文、消失的账号。高三的一年，我看着和我互相关注的几个用户消失，再换号回归，再消失，直到我再也搞不清哪个ID是那个人；我看着我插科打诨的知乎回答被折叠、被删除；我看着大批网络用户被别有用心的人放出的“吃瓜”、“辟谣”、“反转”的烟幕弹弄的晕头转向；我看着那些本该引起重视的讯息被各种娱乐八卦有意无意地淹没。2016年的某一天，当新浪删除了我几年前发的一条微博以后，我删光了所有微博，安安静静地离开了这个平台。被熊培云称赞的互联网的力量，并不一定能让这个社会变得更美好，有时候它甚至会把情况变得更糟。</p>
-<p>互联网是个大沙漠，而我们都是沙子。渺小、松散、随不知哪里吹来的风浮游，然后不知道什么时候就消失不见。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1668,7 +1687,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posting</span>
                 </a>
               </div>
@@ -1681,7 +1700,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
