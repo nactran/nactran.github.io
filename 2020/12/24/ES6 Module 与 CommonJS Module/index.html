@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="黑屁," />
+  <meta name="keywords" content="Javascript," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="甲午之战，不是日本必胜，而是清朝必败。从生产力的角度说，日本并没有比中国先进到哪里去。即使是军备上存在代际差距日本也不可能完全战胜中国。甲午之战日本胜中国败最碰巧的就是日本成功建立起了中央集权，而清朝的中央集权恰好因为太平天国战争大大削弱了。 一个反面例子是万历朝鲜之战：一边是腐朽的中央集权大国，另一边是刚刚统一的封建小国，双方短时间内打成平手，但是即使丰臣秀吉不死打下去日本也必败。比起白村江之战">
+<meta name="description" content="ES6 的导出sthexport.js 12345678&#x2F;&#x2F;ES6 中的顶级导出，与次级导出并行不悖export default function myFunc(name,age)&amp;#123;  console.log(&#39;Name: &#39;+name+&#39;\n&#39;+&#39;Age: &#39;+age+&#39;\n&#39;);&amp;#125;var name &#x3D; &#39;Tadokoro&#39;;var age &#x3D; 24export &amp;#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2018-11-04-十一月四日夜杂谈">
-<meta property="og:url" content="http://pleviumtan.github.io/2018/11/05/2018-11-04-%E5%8D%81%E4%B8%80%E6%9C%88%E5%9B%9B%E6%97%A5%E5%A4%9C%E6%9D%82%E8%B0%88/index.html">
+<meta property="og:title" content="ES6 Module 与 CommonJS Module">
+<meta property="og:url" content="http://pleviumtan.github.io/2020/12/24/ES6%20Module%20%E4%B8%8E%20CommonJS%20Module/index.html">
 <meta property="og:site_name" content="Rumah Sakit Chisho Negara">
-<meta property="og:description" content="甲午之战，不是日本必胜，而是清朝必败。从生产力的角度说，日本并没有比中国先进到哪里去。即使是军备上存在代际差距日本也不可能完全战胜中国。甲午之战日本胜中国败最碰巧的就是日本成功建立起了中央集权，而清朝的中央集权恰好因为太平天国战争大大削弱了。 一个反面例子是万历朝鲜之战：一边是腐朽的中央集权大国，另一边是刚刚统一的封建小国，双方短时间内打成平手，但是即使丰臣秀吉不死打下去日本也必败。比起白村江之战">
+<meta property="og:description" content="ES6 的导出sthexport.js 12345678&#x2F;&#x2F;ES6 中的顶级导出，与次级导出并行不悖export default function myFunc(name,age)&amp;#123;  console.log(&#39;Name: &#39;+name+&#39;\n&#39;+&#39;Age: &#39;+age+&#39;\n&#39;);&amp;#125;var name &#x3D; &#39;Tadokoro&#39;;var age &#x3D; 24export &amp;#123;">
 <meta property="og:locale" content="id_ID">
-<meta property="article:published_time" content="2018-11-04T15:44:37.935Z">
-<meta property="article:modified_time" content="2020-06-20T07:36:19.749Z">
+<meta property="article:published_time" content="2020-12-23T19:35:50.168Z">
+<meta property="article:modified_time" content="2020-12-23T19:39:59.394Z">
 <meta property="article:author" content="Locke TAN">
-<meta property="article:tag" content="黑屁">
+<meta property="article:tag" content="Javascript">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://pleviumtan.github.io/2018/11/05/2018-11-04-十一月四日夜杂谈/"/>
+  <link rel="canonical" href="http://pleviumtan.github.io/2020/12/24/ES6 Module 与 CommonJS Module/"/>
 
 
 
 
 
-  <title>2018-11-04-十一月四日夜杂谈 | Rumah Sakit Chisho Negara</title>
+  <title>ES6 Module 与 CommonJS Module | Rumah Sakit Chisho Negara</title>
   
 
 
@@ -237,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://pleviumtan.github.io/2018/11/05/2018-11-04-%E5%8D%81%E4%B8%80%E6%9C%88%E5%9B%9B%E6%97%A5%E5%A4%9C%E6%9D%82%E8%B0%88/">
+    <link itemprop="mainEntityOfPage" href="http://pleviumtan.github.io/2020/12/24/ES6%20Module%20%E4%B8%8E%20CommonJS%20Module/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Locke TAN">
@@ -254,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">2018-11-04-十一月四日夜杂谈</h1>
+          <h1 class="post-title" itemprop="name headline">ES6 Module 与 CommonJS Module</h1>
         
 
         <div class="post-meta">
@@ -266,8 +266,8 @@
               
                 <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T00:44:37+09:00">
-                2018-11-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-24T04:35:50+09:00">
+                2020-12-24
               </time>
             
 
@@ -304,13 +304,14 @@
       
 
       
-        <p>甲午之战，不是日本必胜，而是清朝必败。从生产力的角度说，日本并没有比中国先进到哪里去。即使是军备上存在代际差距日本也不可能完全战胜中国。甲午之战日本胜中国败最碰巧的就是日本成功建立起了中央集权，而清朝的中央集权恰好因为太平天国战争大大削弱了。</p>
-<p>一个反面例子是万历朝鲜之战：一边是腐朽的中央集权大国，另一边是刚刚统一的封建小国，双方短时间内打成平手，但是即使丰臣秀吉不死打下去日本也必败。比起白村江之战，万里之战中日两国科技水平是比较接近的，即在同样的科技水平，封建制不可能打垮中央集权。</p>
-<p>黄海之战北洋水师失败，但是其实还能打。而李鸿章避战保船，主要是北洋水师实质上是他个人的政治资本。一个鼎盛的帝国是不会允许这种情况发生的。所以说穿了就是中央集权已经在太平天国战争里大大破坏，导致清朝作战一塌糊涂。</p>
-<p>与此对应的反面例子是旅顺攻击战。死伤人数加起来相当于打掉两个师团，但是最后日军还是硬生生啃下203高地，全歼旅顺舰队。日本的师团是按照兵源地编成，如果放在清朝，这些师团指挥官往往是地方政治势力代理人，打成这样估计乃木希典早就小命不保了。也许这些地方政治势力代理人从一开始就不会这样给中央政府送命。但明治日本是中央集权国家，虽然还残留很多旧时代的特质，但军队是天皇的军队，也就是国家的军队，算不上指挥官的政治资本。所以就算打掉两个师团，甚至哪怕打掉整个第三军，203高地也一定要拿下来，旅顺要塞也一定要攻下来，这里面没有哪个指挥官或者政治家为个人利益考量的余地。</p>
-<p>所以明治维新从一开始就是开挂一样的存在吧。先是版籍奉還和廃藩置県，把武士阶级从政治上消灭掉；然后是地租改正和秩禄処分，把武士从经济上也消灭掉，最后一场西南战争把武士的精神也消灭掉。用了10年时间就瓦解了存在了1000年的武士阶级，国运除了开挂找不出别的词形容。</p>
-<p>再看看现在：美帝战后建立的GHQ体制运行了70年，对日本的发展作出过巨大贡献，但是现在弊端，或者说一些没解决的问题也是愈发突出。现在内心一直期盼着日本什么时候能再有人站出来，像明治维新一样，靠着自己的力量痛痛快快和过去一刀两断，走向历史的新阶段。    </p>
+        <h1 id="ES6-的导出"><a href="#ES6-的导出" class="headerlink" title="ES6 的导出"></a>ES6 的导出</h1><p><code>sthexport.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES6 中的顶级导出，与次级导出并行不悖</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">myFunc</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Name: '</span>+name+<span class="string">'\n'</span>+<span class="string">'Age: '</span>+age+<span class="string">'\n'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'Tadokoro'</span>;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">24</span></span><br><span class="line"><span class="keyword">export</span> &#123;name,age&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="ES6-的导入"><a href="#ES6-的导入" class="headerlink" title="ES6 的导入"></a>ES6 的导入</h1><p><code>sthimport.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> saysth,&#123;name,age&#125; <span class="keyword">from</span> <span class="string">'./sthexport.js'</span></span><br><span class="line"><span class="comment">//Error</span></span><br><span class="line"><span class="comment">//import &#123;myFunc,name,age&#125; from './sthexport.js'</span></span><br><span class="line"></span><br><span class="line">saysth(name,age);</span><br><span class="line"><span class="comment">//Error</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">SyntaxError: The requested module './sthexport.js' does not provide an export named 'myFunc'</span></span><br><span class="line"><span class="comment">    at ModuleJob._instantiate (internal/modules/esm/module_job.js:96:21)</span></span><br><span class="line"><span class="comment">    at async ModuleJob.run (internal/modules/esm/module_job.js:134:20)</span></span><br><span class="line"><span class="comment">    at async Loader.import (internal/modules/esm/loader.js:179:24)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//myFunc(name,age)</span></span><br></pre></td></tr></table></figure>
 
+<h1 id="CommonJS-的导出"><a href="#CommonJS-的导出" class="headerlink" title="CommonJS 的导出"></a>CommonJS 的导出</h1><p><code>sthexport.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两个都可以</span></span><br><span class="line"><span class="built_in">module</span>.exports.age = <span class="number">24</span>;</span><br><span class="line">exports.name = <span class="string">'Tadokoro'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Common JS 中的顶级导出，会覆盖前面的次级导出</span></span><br><span class="line"><span class="comment">//undefined</span></span><br><span class="line"><span class="comment">//undefined</span></span><br><span class="line"><span class="comment">//module.exports = &#123;job:"Student"&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="CommonJS-的导入"><a href="#CommonJS-的导入" class="headerlink" title="CommonJS 的导入"></a>CommonJS 的导入</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="built_in">require</span>(<span class="string">'./sthexport'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Name: '</span>+ i.name + <span class="string">'\n'</span> + <span class="string">'Age: '</span>+ i.age + <span class="string">'\n'</span>);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -327,7 +328,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E9%BB%91%E5%B1%81/" rel="tag"># 黑屁</a>
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
           
         </div>
       
@@ -340,8 +341,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/31/2018-10-30-python2%E4%B8%8Brequest%E7%9A%84%E7%BC%96%E7%A0%81/" rel="next" title="2018-10-30-python2下request的编码">
-                <i class="fa fa-chevron-left"></i> 2018-10-30-python2下request的编码
+              <a href="/2020/08/10/LeetCode%E9%93%BE%E8%A1%A8/" rel="next" title="LeetCode链表">
+                <i class="fa fa-chevron-left"></i> LeetCode链表
               </a>
             
           </div>
@@ -349,10 +350,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/23/2018-11-23-mysql%E6%97%B6%E9%97%B4%E7%9B%B8%E5%87%8F%E7%9A%84%E9%97%AE%E9%A2%98/" rel="prev" title="2018-11-23-mysql时间相减的问题">
-                2018-11-23-mysql时间相减的问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -404,8 +401,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Daftar Isi
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Ikhtisar
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -488,6 +494,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-的导出"><span class="nav-number">1.</span> <span class="nav-text">ES6 的导出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-的导入"><span class="nav-number">2.</span> <span class="nav-text">ES6 的导入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CommonJS-的导出"><span class="nav-number">3.</span> <span class="nav-text">CommonJS 的导出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CommonJS-的导入"><span class="nav-number">4.</span> <span class="nav-text">CommonJS 的导入</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
